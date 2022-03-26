@@ -21,17 +21,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        id = findViewById(R.id.id);
-        name = findViewById(R.id.name);
-        dsc = findViewById(R.id.desc);
-        price = findViewById(R.id.price);
-        qty = findViewById(R.id.qty);
-
-        create = findViewById(R.id.createbtn);
-        retrieve = findViewById(R.id.retrievebtn);
-        update = findViewById(R.id.updatebtn);
-        delete = findViewById(R.id.deletebtn);
-
+        //edittext
+        id = findViewById(R.id.fruit_id);
+        name = findViewById(R.id.fruit_name);
+        dsc = findViewById(R.id.fruit_desc);
+        price = findViewById(R.id.fruit_price);
+        qty = findViewById(R.id.fruit_qty);
+        //button
+        create = findViewById(R.id.createButton);
+        retrieve = findViewById(R.id.retrieveButton);
+        update = findViewById(R.id.updateButton);
+        delete = findViewById(R.id.deleteButton);
+        //database
         DB = new DBHelper(this);
 
         create.setOnClickListener(new View.OnClickListener() {
@@ -43,45 +44,46 @@ public class MainActivity extends AppCompatActivity {
                 String priceTXT = price.getText().toString();
                 String qtyTXT = qty.getText().toString();
 
+                //check empty edit texts
                 if (idTXT.isEmpty()) {
-                    id.setError("Product ID is required!");
+                    id.setError("Fruit ID is required!");
                     id.requestFocus();
                     return;
                 }
                 if (nameTXT.isEmpty()) {
-                    name.setError("Product name is required!");
+                    name.setError("Fruit Name is required!");
                     name.requestFocus();
                     return;
                 }
                 if (dscTXT.isEmpty()) {
-                    dsc.setError("Product description is required!");
+                    dsc.setError("Fruit Description is required!");
                     dsc.requestFocus();
                     return;
                 }
                 if (priceTXT.isEmpty()) {
-                    price.setError("Product price is required!");
+                    price.setError("Fruit Price is required!");
                     price.requestFocus();
                     return;
                 }
                 if (qtyTXT.isEmpty()) {
-                    qty.setError("Product quantity is required!");
+                    qty.setError("Fruit Quantity is required!");
                     qty.requestFocus();
                     return;
                 }
 
                 if (idTXT.isEmpty() || nameTXT.isEmpty() || dscTXT.isEmpty() || priceTXT.isEmpty() || qtyTXT.isEmpty()) {
-                    Toast.makeText(MainActivity.this, "Please fill up required fields!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "All fields are required!", Toast.LENGTH_SHORT).show();
                 } else {
-                    Boolean checkinsertdata = DB.insertuserdata(idTXT, nameTXT, dscTXT, priceTXT, qtyTXT);
-                    if (checkinsertdata == true) {
-                        Toast.makeText(MainActivity.this, "Product Inserted", Toast.LENGTH_SHORT).show();
+                    Boolean createdata = DB.insertuserdata(idTXT, nameTXT, dscTXT, priceTXT, qtyTXT);
+                    if (createdata == true) {
+                        Toast.makeText(MainActivity.this, "Fruit Created", Toast.LENGTH_SHORT).show();
                         id.getText().clear();
                         name.getText().clear();
                         dsc.getText().clear();
                         price.getText().clear();
                         qty.getText().clear();
                     } else
-                        Toast.makeText(MainActivity.this, "Product Not Inserted.Product ID Exists!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Fruit Record Not Created. Fruit ID Exists!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -95,45 +97,46 @@ public class MainActivity extends AppCompatActivity {
                 String priceTXT = price.getText().toString();
                 String qtyTXT = qty.getText().toString();
 
+                //check empty edit texts
                 if (idTXT.isEmpty()) {
-                    id.setError("Product ID is required!");
+                    id.setError("Fruit ID is required!");
                     id.requestFocus();
                     return;
                 }
                 if (nameTXT.isEmpty()) {
-                    name.setError("Product name is required!");
+                    name.setError("Fruit name is required!");
                     name.requestFocus();
                     return;
                 }
                 if (dscTXT.isEmpty()) {
-                    dsc.setError("Product description is required!");
+                    dsc.setError("Fruit description is required!");
                     dsc.requestFocus();
                     return;
                 }
                 if (priceTXT.isEmpty()) {
-                    price.setError("Product price is required!");
+                    price.setError("Fruit price is required!");
                     price.requestFocus();
                     return;
                 }
                 if (qtyTXT.isEmpty()) {
-                    qty.setError("Product quantity is required!");
+                    qty.setError("Fruit quantity is required!");
                     qty.requestFocus();
                     return;
                 }
 
                 if (idTXT.isEmpty() || nameTXT.isEmpty() || dscTXT.isEmpty() || priceTXT.isEmpty() || qtyTXT.isEmpty()) {
-                    Toast.makeText(MainActivity.this, "Please fill up required fields!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "All fields are required!", Toast.LENGTH_SHORT).show();
                 } else {
-                    Boolean checkupdatedata = DB.updateuserdata(idTXT, nameTXT, dscTXT, priceTXT, qtyTXT);
-                    if (checkupdatedata == true) {
-                        Toast.makeText(MainActivity.this, "Product Updated", Toast.LENGTH_SHORT).show();
+                    Boolean updatedata = DB.updateuserdata(idTXT, nameTXT, dscTXT, priceTXT, qtyTXT);
+                    if (updatedata == true) {
+                        Toast.makeText(MainActivity.this, "Fruit Record Updated", Toast.LENGTH_SHORT).show();
                         id.getText().clear();
                         name.getText().clear();
                         dsc.getText().clear();
                         price.getText().clear();
                         qty.getText().clear();
                     } else
-                        Toast.makeText(MainActivity.this, "Product Not Updated.Product ID does not Exists!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Fruit Record Not Updated. Fruit ID does not Exists!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -142,19 +145,24 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String idTXT = id.getText().toString();
-                Boolean checkudeletedata = DB.deletedata(idTXT);
+                Boolean deletedata = DB.deletedata(idTXT);
 
+                //check if id is empty
                 if (idTXT.isEmpty()) {
-                    id.setError("Product ID is required!");
+                    id.setError("Fruit ID is required!");
                     id.requestFocus();
                     return;
                 }
 
-                if (checkudeletedata == true) {
-                    Toast.makeText(MainActivity.this, "Product Deleted", Toast.LENGTH_SHORT).show();
+                if (deletedata == true) {
+                    Toast.makeText(MainActivity.this, "Fruit Record Deleted", Toast.LENGTH_SHORT).show();
                     id.getText().clear();
+                    name.getText().clear();
+                    dsc.getText().clear();
+                    price.getText().clear();
+                    qty.getText().clear();
                 } else
-                    Toast.makeText(MainActivity.this, "Product Not Deleted.Product ID does not Exists!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Fruit Record Not Deleted. Fruit ID does not Exists!", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -163,21 +171,21 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Cursor res = DB.getdata();
                 if (res.getCount() == 0) {
-                    Toast.makeText(MainActivity.this, "No Product/s Exists", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "No Fruit Record/s Exists", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 StringBuffer buffer = new StringBuffer();
                 while (res.moveToNext()) {
-                    buffer.append("ID: " + res.getString(0) + "\n");
-                    buffer.append("Name: " + res.getString(1) + "\n");
-                    buffer.append("Description: " + res.getString(2) + "\n");
-                    buffer.append("Price: " + res.getString(3) + "\n");
-                    buffer.append("Quantity: " + res.getString(4) + "\n\n");
+                    buffer.append("Fruit ID: " + res.getString(0) + "\n");
+                    buffer.append("Fruit Name: " + res.getString(1) + "\n");
+                    buffer.append("Fruit Description: " + res.getString(2) + "\n");
+                    buffer.append("Fruit Price: " + res.getString(3) + "\n");
+                    buffer.append("Fruit Quantity: " + res.getString(4) + "\n\n");
                 }
 
                 android.app.AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                 builder.setCancelable(true);
-                builder.setTitle("Product Entries");
+                builder.setTitle("Fruit Records");
                 builder.setMessage(buffer.toString());
                 builder.show();
             }

@@ -11,111 +11,128 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:fontFamily="sans-serif-black"
-            android:text="FRUIT SHOP"
-            android:textAlignment="center"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/fruitlogo"
+                android:layout_marginStart="60dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="60dp"
+                android:fontFamily="@font/nexabold"
+                android:text="FRUITY STORE"
+                android:textAlignment="center"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
 
         <EditText
-            android:id="@+id/id"
+            android:id="@+id/fruit_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
-            android:fontFamily="sans-serif-black"
-            android:hint="Product ID"
-            android:maxLines="1"/>
+            android:fontFamily="@font/nexabold"
+            android:hint="Fruit ID"
+            android:maxLines="1" />
 
         <EditText
-            android:id="@+id/name"
+            android:id="@+id/fruit_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
-            android:fontFamily="sans-serif-black"
-            android:hint="Product Name"
-            android:maxLines="1"/>
+            android:fontFamily="@font/nexabold"
+            android:hint="Fruit Name"
+            android:maxLines="1" />
 
         <EditText
-            android:id="@+id/desc"
+            android:id="@+id/fruit_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
-            android:fontFamily="sans-serif-black"
-            android:hint="Product Description"
-            android:maxLines="1"/>
+            android:fontFamily="@font/nexabold"
+            android:hint="Fruit Description"
+            android:maxLines="1" />
 
         <EditText
-            android:id="@+id/price"
+            android:id="@+id/fruit_price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
-            android:fontFamily="sans-serif-black"
-            android:hint="Price"
-            android:maxLines="1"/>
+            android:fontFamily="@font/nexabold"
+            android:hint="Fruit Price"
+            android:maxLines="1" />
 
         <EditText
-            android:id="@+id/qty"
+            android:id="@+id/fruit_qty"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
-            android:fontFamily="sans-serif-black"
-            android:hint="Quantity"
-            android:maxLines="1"/>
+            android:fontFamily="@font/nexabold"
+            android:hint="Fruit Quantity"
+            android:maxLines="1" />
 
         <Button
-            android:id="@+id/createbtn"
+            android:id="@+id/createButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
-            android:fontFamily="sans-serif-black"
+            android:backgroundTint="#FF5722"
+            android:fontFamily="@font/nexabold"
             android:text="CREATE" />
 
         <Button
-            android:id="@+id/retrievebtn"
+            android:id="@+id/retrieveButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
-            android:fontFamily="sans-serif-black"
+            android:backgroundTint="#FF5722"
+            android:fontFamily="@font/nexabold"
             android:text="RETRIEVE" />
 
         <Button
-            android:id="@+id/updatebtn"
+            android:id="@+id/updateButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
-            android:fontFamily="sans-serif-black"
+            android:backgroundTint="#FF5722"
+            android:fontFamily="@font/nexabold"
             android:text="UPDATE" />
 
         <Button
-            android:id="@+id/deletebtn"
+            android:id="@+id/deleteButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
-            android:fontFamily="sans-serif-black"
+            android:backgroundTint="#FF5722"
+            android:fontFamily="@font/nexabold"
             android:text="DELETE" />
 
     </LinearLayout>
